@@ -3,6 +3,7 @@ class DonationScanner
   INSPECT   = 'Inspect'
   KEEP      = 'Keep'
   DONATE    = 'Donate'
+  REFILLING_TOKENS = 'Refilling Tokens'
 
   def initialize asin = nil
     @asin = formatted_asin asin 
@@ -10,6 +11,7 @@ class DonationScanner
   
   def result
     begin
+      return REFILLING_TOKENS if response == 'Not Enough Tokens'
       return NOT_FOUND if response.nil?
       
       outcome = if (formula_1 | formula_2 | formula_3 | formula_4)

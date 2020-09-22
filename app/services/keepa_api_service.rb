@@ -1,11 +1,13 @@
 class KeepaApiService
   PRODUCTS_URL = "https://api.keepa.com/product?key=%s&domain=6&stats=180&asin=%s"
- 
+  NOT_ENOUGH_TOKANES = 'Not Enough Tokens'
+
   def initialize(asin)
     @asin = asin
   end
 
   def book_info
+    return NOT_ENOUGH_TOKANES if response['tokensLeft'] < 0 
     return nil if response['products'].nil?
 
     { list_price: list_price * 0.01, 

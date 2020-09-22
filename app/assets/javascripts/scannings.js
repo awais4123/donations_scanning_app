@@ -22,6 +22,9 @@ $(document).ready(function () {
       $('.not-found').show();
 
     }
+    else if (data.outcome == 'Refilling Tokens') {
+      $('.refilling-tokens').show();
+    }
     
     setTimeout(function () {
       window.location.reload(1);

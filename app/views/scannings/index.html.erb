@@ -1,0 +1,22 @@
+<div class="alert alert-success keep" role="alert" style="display: none;">
+  <h1 class="alert-heading">KEEP</h1>  
+</div>
+
+<div class="alert alert-danger donate" role="alert" style="display: none;">
+  <h1 class="alert-heading">DONATE</h1>  
+</div>
+
+<div class="alert alert-primary inspect" role="alert" style="display: none;">
+  <h1 class="alert-heading">INSPECT</h1>  
+</div>
+
+<div class="alert alert-dark not-found" role="alert" style="display: none;">
+  <h1 class="alert-heading">NOT FOUND</h1>  
+</div>
+
+<%= form_tag scan_book_path , method: :post, class: "margin-auto mt-100", id: 'isbn-search',remote: true do %>
+  <h1 class="h1 mb-3 font-weight-normal">ASIN Scanner</h1>
+  <div class="col-md-5 margin-auto" style="padding: 20px;">
+    <%= text_field_tag :isbn, nil, placeholder: 'Scan a book', autofocus: true, required: true, class: 'w-100 form-control' %>
+  </div>
+<% end %>

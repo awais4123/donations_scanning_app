@@ -40,6 +40,8 @@ GEM
       tzinfo (~> 1.1)
     addressable (2.7.0)
       public_suffix (>= 2.0.2, < 5.0)
+    airbrussh (1.4.0)
+      sshkit (>= 1.6.1, != 1.7.0)
     arel (8.0.0)
     autoprefixer-rails (9.6.0)
       execjs
@@ -50,6 +52,28 @@ GEM
       sass (>= 3.5.2)
     builder (3.2.4)
     byebug (11.1.3)
+    capistrano (3.13.0)
+      airbrussh (>= 1.0.0)
+      i18n
+      rake (>= 10.0.0)
+      sshkit (>= 1.9.0)
+    capistrano-bundler (1.6.0)
+      capistrano (~> 3.1)
+    capistrano-database-yml (1.0.1)
+      capistrano (>= 3.1)
+      sshkit (>= 1.2.0)
+    capistrano-figaro-yml (1.0.5)
+      capistrano (~> 3.1)
+      sshkit (~> 1.2, >= 1.2.0)
+    capistrano-rails (1.4.0)
+      capistrano (~> 3.1)
+      capistrano-bundler (~> 1.1)
+    capistrano-rails-console (2.3.0)
+      capistrano (>= 3.5.0, < 4.0.0)
+      sshkit-interactive (~> 0.3.0)
+    capistrano-rvm (0.1.2)
+      capistrano (~> 3.0)
+      sshkit (~> 1.2)
     capybara (3.32.2)
       addressable
       mini_mime (>= 0.1.3)
@@ -103,9 +127,13 @@ GEM
     mini_portile2 (2.4.0)
     minitest (5.14.2)
     multi_xml (0.6.0)
+    net-scp (3.0.0)
+      net-ssh (>= 2.6.5, < 7.0.0)
+    net-ssh (6.0.2)
     nio4r (2.5.4)
     nokogiri (1.10.10)
       mini_portile2 (~> 2.4.0)
+    pg (1.1.4)
     popper_js (1.14.5)
     public_suffix (4.0.6)
     puma (3.12.6)
@@ -167,7 +195,11 @@ GEM
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
-    sqlite3 (1.4.2)
+    sshkit (1.21.0)
+      net-scp (>= 1.1.2)
+      net-ssh (>= 2.8.0)
+    sshkit-interactive (0.3.0)
+      sshkit (~> 1.12)
     thor (1.0.1)
     thread_safe (0.3.6)
     tilt (2.0.10)
@@ -195,6 +227,11 @@ PLATFORMS
 DEPENDENCIES
   bootstrap (~> 4.1.3)
   byebug
+  capistrano-database-yml
+  capistrano-figaro-yml
+  capistrano-rails
+  capistrano-rails-console
+  capistrano-rvm
   capybara (>= 2.15)
   coffee-rails (~> 4.2)
   figaro
@@ -202,13 +239,13 @@ DEPENDENCIES
   jbuilder (~> 2.5)
   jquery-rails
   listen (>= 3.0.5, < 3.2)
+  pg
   puma (~> 3.7)
   rails (~> 5.1.7)
   sass-rails (~> 5.0)
   selenium-webdriver
   spring
   spring-watcher-listen (~> 2.0.0)
-  sqlite3
   turbolinks (~> 5)
   tzinfo-data
   uglifier (>= 1.3.0)

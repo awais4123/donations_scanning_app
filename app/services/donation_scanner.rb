@@ -5,8 +5,16 @@ class DonationScanner
   DONATE    = 'Donate'
   REFILLING_TOKENS = 'Refilling Tokens'
 
-  def initialize asin = nil
-    @asin = formatted_asin asin 
+  def initialize standard_identifier = nil
+    sd = standard_identifier.gsub('-', '').strip
+    #Remove 13 or 10 from 13978 and 10978, resp.
+    match = sd.match /^(13|10)978/
+    if match
+      @standard_identifier = sd.gsub match[1], ''
+    else
+      @standard_identifier = sd
+    end
+    @asin = StdNum::ISBN.allNormalizedValues(standard_identifier)[1]
   end
   
   def result

@@ -28,7 +28,7 @@ $(document).ready(function () {
     
     setTimeout(function () {
       window.location.reload(1);
-    }, 3000);
+    }, 2000);
 
   });
   $("#isbn-search").on("ajax:error", function (e) {
